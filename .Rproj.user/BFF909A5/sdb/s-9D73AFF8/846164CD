@@ -1,0 +1,18 @@
+{
+    "contents" : "# fixed effect meta-analysis\n## inverse variance weights based on MLE\n## l(theta_o) = const[-1/2*sum((1/sigma^2_i)(theta_i_hat - theta_o)^2)]\n##            = const(-1/2)sum(w_i(theta_i_hat - theta_o)^2)\n##  ...       = const*(-1/2)sum(...)\n\n# randome effects pooling\n## inverse-variance method\n## theta_r_hat = sum(w_i*theta_hat_i)/sum(w_i)\n##   w_i = 1/(sigma_i^2 + sigma_B^2)\n\n",
+    "created" : 1465478551479.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2683209652",
+    "id" : "846164CD",
+    "lastKnownWriteTime" : 1465482893,
+    "path" : "~/Dropbox/UT Biostat/CHL7001 Statistical Analysis of Health Economic Data/lecture04.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
