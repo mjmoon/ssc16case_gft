@@ -1,9 +1,9 @@
 source("importData.R")
 source("graphicSetting.R")
 
-png("Img/des.Can.png", width = pltWidth, height = pltHeight)
+png("Img/des.Can1.png", width = pltWidth, height = pltHeight)
 ggplot(data = can, aes(x = Date)) + mytheme +
-  labs(x = "", y = "Frequency (per 10,000)\nPercentage", title = "GFT vs influenza test frequencies in Canada") +
+  labs(x = "", y = "Frequency (10,000)\nand Percentage", title = "GFT vs influenza test frequencies in Canada") +
   geom_line(aes(y = FluPos/10000, color = "Positive test")) +
   geom_line(aes(y = FluTest/10000, color = "Total test")) +
   geom_line(aes(y = FluPos/FluTest, color = "Positive test percentage"), linetype = 2) +
@@ -25,8 +25,8 @@ plt.legend <- get_legend(plt.total)
 
 plt.posfr <- ggplot(data = can, aes(x = Date)) + mytheme +
   labs(x = "", y = "", title = "Positive frequency") +
-  geom_line(aes(y = FluPos/10000, color = "Positive test per 10,000")) +
-  geom_line(aes(y = gft/10000, color = "Google Flu Trend per 10,000")) +
+  geom_line(aes(y = FluPos/10000, color = "Positive test (10,000)")) +
+  geom_line(aes(y = gft/10000, color = "Google Flu Trend per (10,000)")) +
   scale_color_brewer(palette = "Set1", guide = FALSE) +
   theme(plot.title = element_text(size = rel(1.2)),
         axis.text = element_text(size = rel(0.8)))
@@ -34,7 +34,7 @@ plt.posfr <- ggplot(data = can, aes(x = Date)) + mytheme +
 plt.pospc <- ggplot(data = can, aes(x = Date)) + mytheme +
   labs(x = "", y = "", title = "Positive percentage") +
   geom_line(aes(y = FluPos/FluTest, color = "Positive test percentage")) +
-  geom_line(aes(y = gft/10000, color = "Google Flu Trend per 10,000")) +
+  geom_line(aes(y = gft/10000, color = "Google Flu Trend (10,000)")) +
   scale_color_brewer(palette = "Set1", guide = FALSE) +
   theme(plot.title = element_text(size = rel(1.2)),
         axis.text = element_text(size = rel(0.8)))
@@ -45,17 +45,18 @@ grid.arrange(plt.total + theme(legend.position = "none"), plt.posfr, plt.pospc, 
 dev.off()
 
 plt.total.other <- ggplot(data = can, aes(x = Date)) + mytheme +
-  labs(x = "", y = "Frequency (per 10,000)", title = "") +
+  labs(x = "", y = "Frequency (10,000)", title = "") +
   geom_line(aes(y = RSVtest/10000, color = "RSV")) +
   geom_line(aes(y = adenot/10000, color = "Adenovirus")) +
   geom_line(aes(y = parat/10000, color = "Parainfluenza")) +
   geom_line(aes(y = Rhinot/10000, color = "Rhinovirus")) +
   geom_line(aes(y = hMPVt/10000, color = "hMPV")) +
+  geom_line(aes(y = Coronat/10000, color = "Coronavirus")) +
   geom_line(aes(y = gft/10000, color = "Google Flu Trend")) +
   scale_color_brewer(palette = "Set1", 
                      guide = guide_legend(nrow = 2, title = "", byrow = TRUE),
-                     breaks = c("Google Flu Trend", "Adenovirus", "hMPV", 
-                                "Parainfluenza", "Rhinovirus", "RSV"))
+                     breaks = c("Google Flu Trend", "Adenovirus", "RSV", "Parainfluenza", 
+                                "hMPV", "Rhinovirus", "Coronavirus"))
 
 plt.legend <- get_legend(plt.total.other)
 
@@ -66,6 +67,7 @@ plt.pospc.other <- ggplot(data = can, aes(x = Date)) + mytheme +
   geom_line(aes(y = para/parat, color = "Parainfluenza")) +
   geom_line(aes(y = Rhino/Rhinot, color = "Rhinovirus")) +
   geom_line(aes(y = hMPV/hMPVt, color = "hMPV")) +
+  geom_line(aes(y = Corona/Coronat, color = "Coronavirus")) +
   geom_line(aes(y = -1, color = "Goolge Flu Trend")) +
   scale_color_brewer(palette = "Set1", 
                      guide = FALSE) +
