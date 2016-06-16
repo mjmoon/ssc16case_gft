@@ -59,6 +59,7 @@ maxDate <- max(all$Date[!is.na(all$FluPos) & !is.na(all$gft)])
 all$yr <- as.numeric(format(all$Date, '%Y'))
 all$mth <- as.numeric(format(all$Date, '%m'))
 all$wk <- as.numeric(format(all$Date + 3, '%U'))
+all$yrsept <- floor(all$yr - (all$mth < 9)/2)
 
 can <- subset(all, reg == "CAN" & Date >= minDate & Date <= maxDate)
 on <- subset(all, reg == "ON" & Date >= minDate & Date <= maxDate)

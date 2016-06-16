@@ -57,9 +57,9 @@ corrRes <- rbind(corrRes, c(-1, "Coronavirus", "Postive test frequency", "Spearm
                             sp$estimate, sp$p.value, 0))
 
 ### Spearman's correlations by year ###
-sp.yr <- cbind(by(can, can$yr, FUN = function(x) cor(x$gft, x$FluTest, method = "spearman")),
-               by(can, can$yr, FUN = function(x) cor(x$gft, x$FluPos, method = "spearman")),
-               by(can, can$yr, FUN = function(x) cor(x$gft, x$FluPos/x$FluTest, method = "spearman"))
+sp.yr <- cbind(by(can, can$yrsept, FUN = function(x) cor(x$gft, x$FluTest, method = "spearman")),
+               by(can, can$yrsept, FUN = function(x) cor(x$gft, x$FluPos, method = "spearman")),
+               by(can, can$yrsept, FUN = function(x) cor(x$gft, x$FluPos/x$FluTest, method = "spearman"))
                )
 
 sp.yr.df <- rbind(data.frame(year = row.names(sp.yr), illness = "Influenza", 
